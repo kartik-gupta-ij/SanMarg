@@ -33,8 +33,12 @@ async function main(campground) {
     from:'sid.mishra190601@gmail.com',
     to:`hrkkrh01@gmail.com`,
     cc:`${campground['author']}`,
-    subject:`${campground['type']}`,
-    text:`Your Complaint has been received.\n\nComplaint:${campground.type}, \n\n Location:${campground.location}`,
+    subject:`Your compilent of ${campground['type']} has been resgisted.`,
+    text:`Hello\n\nYour Complaint has been received.\n\nComplaint:${campground.type},
+     \n\nLocation:${campground.location},
+     \n\nApplication ID :${campground._id}\n\nYou can check the status be clicking the link givw below
+     \n\nhttps://sanmarg.onrender.com/issues/${campground._id}
+     \n\nThank you`,
    // html body
     });
 }
