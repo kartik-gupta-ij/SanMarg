@@ -20,6 +20,7 @@
     border-radius: 12px;
     align-items: center;
     justify-content: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .category-container-blue{
     padding:2% 5%;
@@ -30,7 +31,14 @@
     border-radius: 12px;
     align-items: center;
     justify-content: center;   
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    
 }
 label{
     font-weight: bold;
+}
+.browse-btn{
+    background-color :#FFC947;
+
 }
