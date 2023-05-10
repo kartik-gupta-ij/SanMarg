@@ -12,6 +12,7 @@ async function main(campground) {
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
     let testAccount = await nodemailer.createTestAccount();
+    console.log(campground)
   
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
@@ -40,9 +41,10 @@ async function main(campground) {
     //     path:`./uploads/${fileName}`
     //   }],
 
+
     from:'sid.mishra190601@gmail.com',
     to:`${data[0]['mail']}`,
-    cc:`${campground.author}`,
+    cc:`${campground['author']}`,
     subject:'This is test case',
     text:'Test content',
    // html body
@@ -77,19 +79,20 @@ module.exports.createCampground = async (req, res, next) => {
     campground.geometry = geoData.body.features[0].geometry;
     campground.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     await campground.save();
-    console.log(campground.author);
+    console.log(campground);
     main(campground).catch(console.error);
-    req.flash('success', 'Successfully made a new campground!');
+    req.flash('success', 'Thank you for your submission!. Your request has been recieved and will be forwarded to governmeent portal as soon as possible');
     res.redirect(`/issues/${campground._id}`)
 }
 
 module.exports.showCampground = async (req, res,) => {
-    const campground = await Campground.findById(req.params.id)
+    const campground = await Campground.findById(req.params.id).populate({
+        path: 'reviews'
+    })
     if (!campground) {
         req.flash('error', 'Cannot find that campground!');
         return res.redirect('/issues');
     }
-    console.log("aaaaaa",(campground));
     res.render('campgrounds/show', { campground });
 }
 

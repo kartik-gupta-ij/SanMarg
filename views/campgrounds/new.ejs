@@ -4,21 +4,6 @@
         <div class="col-md-6 offset-md-3">
             <form action="/issues" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label class="form-label" for="email">Email</label>
-                    <input class="form-control" type="email" id="email" name="campground[author]" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                
-                <div class="mb-3">
-                    <label class="form-label" for="location">Location</label>
-                    <input class="form-control" type="text" id="location" name="campground[location]" required>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
-                <div class="mb-3">
                     <label class="form-label" for="type">Type</label>
                     <div class="form-check" id="type"> 
                         <input class="form-check-input" type="radio" name="campground[type]" value="Potholes" id="flexRadioDefault1">
@@ -60,16 +45,22 @@
                         Looks good!
                     </div>
                 </div>
-
-                <!-- <div class="mb-3">
-                <label class="form-label" for="image">Image Url</label>
-                <input class="form-control" type="text" id="image" name="campground[image]" required>
-                <div class="valid-feedback">
-                    Looks good!
+                <div id='map'></div>
+                <div class="mb-3">
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-control" type="email" id="email" name="campground[author]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
                 </div>
-            </div> -->
-
-
+                
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="campground[location]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
                 <div class="mb-3">
                     <div class="form-file custom-file">
                         <input type="file" class="form-file-input" id="image" name="image" multiple>
@@ -83,8 +74,8 @@
                     <button class="btn btn-success">Add Campground</button>
                 </div>
             </form>
-            <a href="/issues">All Campgrounds</a>
-            <div id='map'></div>
+            <a href="/issues">All Issues</a>
+
             <script>
                 mapboxgl.accessToken = '<%-process.env.MAPBOX_TOKEN%>';
                 const map = new mapboxgl.Map({

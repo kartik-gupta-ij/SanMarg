@@ -38,6 +38,27 @@
     </div>
     <div class="col-12 col-md-6">
         <div id='map' ></div>
+        <% if(currentUser){ %>
+            <h2>Update Status</h2>
+            <form action="/issues/<%=campground._id%>/reviews" method="POST" class="mb-3 validated-form" novalidate>
+                <div class="mb-3">
+                    <label class="form-label" for="body">Enter Status</label>
+                    <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <button class="btn btn-success">Submit</button>
+            </form>
+            <% } %>
+            <% for(let review of campground.reviews) { %>
+            <div class="card mb-3 ">
+                <div class="card-body">
+                    <h5 class="card-title"> <%= review.author%></h5>
+                    <p class="card-text">Status : <%= review.body %></p>
+                </div>
+            </div>
+            <% } %>
     </div>
 </div>
 
