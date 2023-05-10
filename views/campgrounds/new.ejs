@@ -1,46 +1,80 @@
 <% layout('layouts/boilerplate')%>
-    <div class="row">
+    
         <h1 class="text-center">New Campground</h1>
         <div class="col-md-6 offset-md-3">
+            <h2>
+                Select your complaint
+            </h2>
             <form action="/issues" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label class="form-label" for="type">Type</label>
-                    <div class="form-check" id="type"> 
-                        <input class="form-check-input" type="radio" name="campground[type]" value="Potholes" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            Potholes
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="campground[type]" value="Road Cracks" id="flexRadioDefault2">
+                <div class="row">   
+                        <label class="form-label" for="type">Type</label>
+                    <div class="col-lg-6 mb-3">
+                        <div class="form-check" id="type"> 
+                            <div class="category-container">
+                            <input class="form-check-input" type="radio" name="campground[type]" value="Potholes" id="flexRadioDefault1">
+                                <img src="/images/roadBlock.png" class="ctg-image"/>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Potholes
+                                </label>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6  mb-3">
+                        <div class="form-check">
+                          <div class="category-container-blue">
+                          <input class="form-check-input" type="radio" name="campground[type]" value="Road Cracks" id="flexRadioDefault2">
+                        <img src="/images/roadPavement.png" class="ctg-image"/>
                         <label class="form-check-label" for="flexRadioDefault2">
                             Road Cracks
                         </label>
                       </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="campground[type]" value="Debris" id="flexRadioDefault3">
-                        <label class="form-check-label" for="flexRadioDefault3">
-                            Debris
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="campground[type]" value="Under Construction" id="flexRadioDefault4">
+                      </div>   
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <div class="form-check">
+                                <div class="category-container-blue">
+                                <input class="form-check-input" type="radio" name="campground[type]" value="Debris" id="flexRadioDefault3">
+                                 <img src="/images/Debris.png" class="ctg-image"/>
+                                <label class="form-check-label" for="flexRadioDefault3">
+                                    Debris
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <div class="form-check">
+                            <div class="category-container">
+                          <input class="form-check-input" type="radio" name="campground[type]" value="Under Construction" id="flexRadioDefault4">
+                        <img src="/images/Road Repair.png" class="ctg-image"/>
                         <label class="form-check-label" for="flexRadioDefault4">
                             Under Construction
                         </label>
                       </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="campground[type]" value="Faded Marking" id="flexRadioDefault5">
+                    </div>
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <div class="form-check">
+                          <div class="category-container">
+                          <input class="form-check-input" type="radio" name="campground[type]" value="Faded Marking" id="flexRadioDefault5">
+                        <img src="/images/Direction Faded.png" class="ctg-image"/>
                         <label class="form-check-label" for="flexRadioDefault5">
                             Faded Marking
                         </label>
+                    </div>
                       </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="campground[type]" value="Others" id="flexRadioDefault6">
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                        <div class="form-check">
+                          <div class="category-container-blue">
+                          <input class="form-check-input" type="radio" name="campground[type]" value="Others" id="flexRadioDefault6">
+                        <img src="/images/Others.png" class="ctg-image"/>
                         <label class="form-check-label" for="flexRadioDefault6">
                             Others
                         </label>
                       </div>
+                    </div>
+                    </div>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
@@ -56,14 +90,28 @@
                 
                 <div class="mb-3">
                     <label class="form-label" for="location">Location</label>
-                    <input class="form-control" type="text" id="location" name="campground[location]" required>
+                    <input class="form-control" type="text" id="location" name="campground[location]" required  >
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3" hidden>
+                    <label class="form-label" for="latitude">Latitude</label>
+                    <input class="form-control" type="text" id="latitude" name="campground[latitude]"   >
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3" hidden>
+                    <label class="form-label" for="longitude">Longitude</label>
+                    <input class="form-control" type="text" id="longitude" name="campground[longitude]"   >
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
                 <div class="mb-3">
                     <div class="form-file custom-file">
-                        <input type="file" class="form-file-input" id="image" name="image" multiple>
+                        <input type="file" class="form-file-input" id="image" name="image" multiple required>
                         <label class="form-file-label" for="image">
                             <span class="form-file-text custom-file-label">Choose image(s)...</span>
                             <span class="form-file-button">Browse</span>
@@ -71,8 +119,9 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <button class="btn btn-success">Add Campground</button>
+                    <button class="btn btn-success">Add Issue</button>
                 </div>
+            </div>
             </form>
             <a href="/issues">All Issues</a>
 
@@ -98,9 +147,16 @@
                 map.addControl(geolocate);
                 // Set an event listener that fires
                 // when a trackuserlocationstart event occurs.
-                geolocate.on('trackuserlocationstart',async (e) => {
-                     console.log('A trackuserlocationstart event has occurred.', e.target);
+                geolocate.on('geolocate',async (e) => {
+                    const {longitude, latitude} = e.target._lastKnownPosition.coords;
+                    document.querySelector('#latitude').value = latitude;
+                    document.querySelector('#longitude').value = longitude;
+                    const url =`https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=pk.eyJ1IjoidGhhdC11c2VybmFtZS1pcy1ub3QtYXZhaWxhYmxlIiwiYSI6ImNrcWVyc3lnZDFqZWIyb292bXBob2lranUifQ.WoDDzQRSSzFy9_0Zti3dgQ`;
+                    const res = await fetch(url);
+                    const json = await res.json();
+                    const location = json.features[0].place_name;
+                    document.querySelector('#location').value = location;
                 });
             </script>
         </div>
-    </div>
+    

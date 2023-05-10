@@ -41,7 +41,7 @@ async function main(campground) {
     //     path:`./uploads/${fileName}`
     //   }],
 
-
+        
     from:'sid.mishra190601@gmail.com',
     to:`${data[0]['mail']}`,
     cc:`${campground['author']}`,
@@ -73,15 +73,22 @@ module.exports.createCampground = async (req, res, next) => {
         query: req.body.campground.location,
         limit: 1
     }).send()
-    req.body.campground.title= `${req.body.campground.location} ${req.body.campground.type}`
-    console.log(req.body, req.files);
+    req.body.campground.title= ` [ ${req.body.campground.type} ] ${req.body.campground.location} `
     const campground = new Campground(req.body.campground);
-    campground.geometry = geoData.body.features[0].geometry;
+    if(req.body.campground.latitude || req.body.campground.longitude){
+        campground.geometry.coordinates[0]=req.body.campground.longitude
+        campground.geometry.coordinates[1]=req.body.campground.latitude
+        campground.geometry.type="Point"
+    }
+    else{
+        campground.geometry = geoData.body.features[0].geometry
+    }
     campground.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     await campground.save();
     console.log(campground);
     main(campground).catch(console.error);
     req.flash('success', 'Thank you for your submission!. Your request has been recieved and will be forwarded to governmeent portal as soon as possible');
+    req.flash('success', 'Thank you for your submission!. Your request has been recieved and will be forwarded to respective corporation as soon as possible');
     res.redirect(`/issues/${campground._id}`)
 }
 
