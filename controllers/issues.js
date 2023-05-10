@@ -34,10 +34,12 @@ async function main(campground) {
     to:`hrkkrh01@gmail.com`,
     cc:`${campground['author']}`,
     subject:`Your compilent of ${campground['type']} has been resgisted.`,
-    text:`Hello\n\nYour Complaint has been received.\n\nComplaint:${campground.type},
-     \n\nLocation:${campground.location},
-     \n\nApplication ID :${campground._id}\n\nYou can check the status be clicking the link givw below
-     \n\nhttps://sanmarg.onrender.com/issues/${campground._id}
+    text:`Hello\n\nYour Complaint has been received.
+    \n\nComplaint Type:${campground.type},
+     \nLocation:${campground.location},
+     \nApplication ID :${campground._id}
+     \n\nYou can check the status by clicking the link given below...
+     \nhttps://sanmarg.onrender.com/issues/${campground._id}
      \n\nThank you`,
    // html body
     });
