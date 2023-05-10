@@ -61,6 +61,20 @@
                         Looks good!
                     </div>
                 </div>
+                <div class="mb-3" hidden>
+                    <label class="form-label" for="latitude">Latitude</label>
+                    <input class="form-control" type="text" id="latitude" name="campground[latitude]"   >
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="mb-3" hidden>
+                    <label class="form-label" for="longitude">Longitude</label>
+                    <input class="form-control" type="text" id="longitude" name="campground[longitude]"   >
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
                 <div class="mb-3">
                     <div class="form-file custom-file">
                         <input type="file" class="form-file-input" id="image" name="image" multiple required>
@@ -71,7 +85,7 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <button class="btn btn-success">Add Campground</button>
+                    <button class="btn btn-success">Add Issue</button>
                 </div>
             </form>
             <a href="/issues">All Issues</a>
@@ -100,6 +114,8 @@
                 // when a trackuserlocationstart event occurs.
                 geolocate.on('geolocate',async (e) => {
                     const {longitude, latitude} = e.target._lastKnownPosition.coords;
+                    document.querySelector('#latitude').value = latitude;
+                    document.querySelector('#longitude').value = longitude;
                     const url =`https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=pk.eyJ1IjoidGhhdC11c2VybmFtZS1pcy1ub3QtYXZhaWxhYmxlIiwiYSI6ImNrcWVyc3lnZDFqZWIyb292bXBob2lranUifQ.WoDDzQRSSzFy9_0Zti3dgQ`;
                     const res = await fetch(url);
                     const json = await res.json();
