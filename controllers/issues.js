@@ -26,17 +26,18 @@ module.exports.createCampground = async (req, res, next) => {
     campground.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     await campground.save();
     console.log(campground);
-    req.flash('success', 'Successfully made a new campground!');
+    req.flash('success', 'Thank you for your submission!. Your request has been recieved and will be forwarded to governmeent portal as soon as possible');
     res.redirect(`/issues/${campground._id}`)
 }
 
 module.exports.showCampground = async (req, res,) => {
-    const campground = await Campground.findById(req.params.id)
+    const campground = await Campground.findById(req.params.id).populate({
+        path: 'reviews'
+    })
     if (!campground) {
         req.flash('error', 'Cannot find that campground!');
         return res.redirect('/issues');
     }
-    console.log("aaaaaa",(campground));
     res.render('campgrounds/show', { campground });
 }
 
