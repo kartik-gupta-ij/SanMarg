@@ -30,26 +30,15 @@ const CampgroundSchema = new Schema({
             required: true
         }
     },
-    price: Number,
-    description: String,
+    type: String,
     location: String,
-    author: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    },
-    reviews: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Review'
-        }
-    ]
+    author: String,
 }, opts);
 
 
 CampgroundSchema.virtual('properties.popUpMarkup').get(function () {
     return `
-    <strong><a href="/issues/${this._id}">${this.title}</a><strong>
-    <p>${this.description.substring(0, 20)}...</p>`
+    <strong><a href="/issues/${this._id}">${this.title}</a><strong>`
 });
 
 

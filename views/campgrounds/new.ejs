@@ -4,15 +4,58 @@
         <div class="col-md-6 offset-md-3">
             <form action="/issues" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label class="form-label" for="title">Title</label>
-                    <input class="form-control" type="text" id="title" name="campground[title]" required>
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-control" type="email" id="email" name="campground[author]" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="campground[location]" required>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label" for="location">Location</label>
-                    <input class="form-control" type="text" id="location" name="campground[location]" required>
+                    <label class="form-label" for="type">Type</label>
+                    <div class="form-check" id="type"> 
+                        <input class="form-check-input" type="radio" name="campground[type]" value="Potholes" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            Potholes
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="campground[type]" value="Road Cracks" id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            Road Cracks
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="campground[type]" value="Debris" id="flexRadioDefault3">
+                        <label class="form-check-label" for="flexRadioDefault3">
+                            Debris
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="campground[type]" value="Under Construction" id="flexRadioDefault4">
+                        <label class="form-check-label" for="flexRadioDefault4">
+                            Under Construction
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="campground[type]" value="Faded Marking" id="flexRadioDefault5">
+                        <label class="form-check-label" for="flexRadioDefault5">
+                            Faded Marking
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="campground[type]" value="Others" id="flexRadioDefault6">
+                        <label class="form-check-label" for="flexRadioDefault6">
+                            Others
+                        </label>
+                      </div>
                     <div class="valid-feedback">
                         Looks good!
                     </div>
@@ -25,26 +68,8 @@
                     Looks good!
                 </div>
             </div> -->
-                <div class="mb-3">
-                    <label class="form-label" for="price">Campground Price</label>
-                    <div class="input-group">
-                        <span class="input-group-text" id="price-label">$</span>
-                        <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
-                            aria-describedby="price-label" name="campground[price]" required>
-                    </div>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
 
-                <div class="mb-3">
-                    <label class="form-label" for="description">Description</label>
-                    <textarea class="form-control" type="text" id="description" name="campground[description]"
-                        required></textarea>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                </div>
+
                 <div class="mb-3">
                     <div class="form-file custom-file">
                         <input type="file" class="form-file-input" id="image" name="image" multiple>
