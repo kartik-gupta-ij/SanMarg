@@ -1,8 +1,62 @@
 const Campground = require('../models/campground');
+// const data=require("./utils/templates.js")
+const data=require('../utils/templates')
 const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 const { cloudinary } = require("../cloudinary");
+const nodemailer=require('nodemailer')
+
+
+async function main(campground) {
+    // Generate test SMTP service account from ethereal.email
+    // Only needed if you don't have a real mail account for testing
+    let testAccount = await nodemailer.createTestAccount();
+    console.log(campground)
+  
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+      service:"gmail",
+      host: "smtp.gmail.com",
+      secure: false, // true for 465, false for other ports
+      auth: {
+        // user: "sid.mishra190601@gmail.com",
+        user:`${process.env.NODEMAILER_EMAIL}`, // generated ethereal user
+        // pass: "somviedqzrgdgyyh", // generated ethereal password
+        pass: `${process.env.NODEMAILER_KEY}`
+      },  
+    });
+  
+    // send mail with defined transport object
+  
+  
+    let info = await transporter.sendMail({
+    //   from: 'sid.mishra190601@gmail.com', // sender address
+    //   to: `${data[selectedCategory-1]["email"]}`, // list of receivers
+    //   cc:`${cc_mail}`,
+    //   subject: `${data[selectedCategory-1]["subject"]}`, // Subject line
+    //   text: `${data[selectedCategory-1]["body"]}\n\n Location \n${locationString}`, // plain text body
+    //   attachments:[{
+    //     filename:`${fileName}`,
+    //     path:`./uploads/${fileName}`
+    //   }],
+
+        
+    from:'sid.mishra190601@gmail.com',
+    to:`${data[0]['mail']}`,
+    cc:`${campground['author']}`,
+    subject:'This is test case',
+    text:'Test content',
+   // html body
+    });
+  
+    console.log("Message sent: %s", info.messageId);
+    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+  
+    // Preview only available when sending through an Ethereal account
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+}
 
 
 module.exports.index = async (req, res) => {
@@ -31,6 +85,9 @@ module.exports.createCampground = async (req, res, next) => {
     }
     campground.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     await campground.save();
+    console.log(campground);
+    main(campground).catch(console.error);
+    req.flash('success', 'Thank you for your submission!. Your request has been recieved and will be forwarded to governmeent portal as soon as possible');
     req.flash('success', 'Thank you for your submission!. Your request has been recieved and will be forwarded to respective corporation as soon as possible');
     res.redirect(`/issues/${campground._id}`)
 }
