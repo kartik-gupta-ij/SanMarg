@@ -56,14 +56,14 @@
                 
                 <div class="mb-3">
                     <label class="form-label" for="location">Location</label>
-                    <input class="form-control" type="text" id="location" name="campground[location]" required>
+                    <input class="form-control" type="text" id="location" name="campground[location]" required  >
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
                 <div class="mb-3">
                     <div class="form-file custom-file">
-                        <input type="file" class="form-file-input" id="image" name="image" multiple>
+                        <input type="file" class="form-file-input" id="image" name="image" multiple required>
                         <label class="form-file-label" for="image">
                             <span class="form-file-text custom-file-label">Choose image(s)...</span>
                             <span class="form-file-button">Browse</span>
@@ -98,8 +98,13 @@
                 map.addControl(geolocate);
                 // Set an event listener that fires
                 // when a trackuserlocationstart event occurs.
-                geolocate.on('trackuserlocationstart',async (e) => {
-                     console.log('A trackuserlocationstart event has occurred.', e.target);
+                geolocate.on('geolocate',async (e) => {
+                    const {longitude, latitude} = e.target._lastKnownPosition.coords;
+                    const url =`https://api.mapbox.com/geocoding/v5/mapbox.places/${longitude},${latitude}.json?access_token=pk.eyJ1IjoidGhhdC11c2VybmFtZS1pcy1ub3QtYXZhaWxhYmxlIiwiYSI6ImNrcWVyc3lnZDFqZWIyb292bXBob2lranUifQ.WoDDzQRSSzFy9_0Zti3dgQ`;
+                    const res = await fetch(url);
+                    const json = await res.json();
+                    const location = json.features[0].place_name;
+                    document.querySelector('#location').value = location;
                 });
             </script>
         </div>
