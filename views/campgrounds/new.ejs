@@ -1,18 +1,17 @@
 <% layout('layouts/boilerplate')%>
     
-        <h1 class="text-center">New Campground</h1>
+        <h1 class="text-center mb-5">Sanmarg - Revolutionizing Road Care, One Tap at a Time!</h1>
         <div class="col-md-6 offset-md-3">
-            <h2>
+            <h2 class="mb-4">
                 Select your complaint
             </h2>
             <form action="/issues" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
                 <div class="mb-3">
-                <div class="row">   
-                        <label class="form-label" for="type">Type</label>
+                <div class="row mt-5 mb-5">   
                     <div class="col-lg-6 mb-3">
                         <div class="form-check" id="type"> 
                             <div class="category-container">
-                            <input class="form-check-input" type="radio" name="campground[type]" value="Potholes" id="flexRadioDefault1">
+                            <input class="form-check-input" type="radio" name="campground[type]" value="Potholes" id="flexRadioDefault1" option="1">
                                 <img src="/images/roadBlock.png" class="ctg-image"/>
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Potholes
@@ -23,7 +22,7 @@
                     <div class="col-lg-6  mb-3">
                         <div class="form-check">
                           <div class="category-container-blue">
-                          <input class="form-check-input" type="radio" name="campground[type]" value="Road Cracks" id="flexRadioDefault2">
+                          <input class="form-check-input" type="radio" name="campground[type]" value="Road Cracks" id="flexRadioDefault2" option="2">
                         <img src="/images/roadPavement.png" class="ctg-image"/>
                         <label class="form-check-label" for="flexRadioDefault2">
                             Road Cracks
@@ -34,7 +33,7 @@
                     <div class="col-lg-6 mb-3">
                         <div class="form-check">
                                 <div class="category-container-blue">
-                                <input class="form-check-input" type="radio" name="campground[type]" value="Debris" id="flexRadioDefault3">
+                                <input class="form-check-input" type="radio" name="campground[type]" value="Debris" id="flexRadioDefault3" option="3">
                                  <img src="/images/Debris.png" class="ctg-image"/>
                                 <label class="form-check-label" for="flexRadioDefault3">
                                     Debris
@@ -45,7 +44,7 @@
                     <div class="col-lg-6 mb-3">
                         <div class="form-check">
                             <div class="category-container">
-                          <input class="form-check-input" type="radio" name="campground[type]" value="Under Construction" id="flexRadioDefault4">
+                          <input class="form-check-input" type="radio" name="campground[type]" value="Under Construction" id="flexRadioDefault4" option="4">
                         <img src="/images/Road Repair.png" class="ctg-image"/>
                         <label class="form-check-label" for="flexRadioDefault4">
                             Under Construction
@@ -56,7 +55,7 @@
                     <div class="col-lg-6 mb-3">
                         <div class="form-check">
                           <div class="category-container">
-                          <input class="form-check-input" type="radio" name="campground[type]" value="Faded Marking" id="flexRadioDefault5">
+                          <input class="form-check-input" type="radio" name="campground[type]" value="Faded Marking" id="flexRadioDefault5" option="5">
                         <img src="/images/Direction Faded.png" class="ctg-image"/>
                         <label class="form-check-label" for="flexRadioDefault5">
                             Faded Marking
@@ -67,7 +66,7 @@
                     <div class="col-lg-6 mb-3">
                         <div class="form-check">
                           <div class="category-container-blue">
-                          <input class="form-check-input" type="radio" name="campground[type]" value="Others" id="flexRadioDefault6">
+                          <input class="form-check-input" type="radio" name="campground[type]" value="Others" id="flexRadioDefault6" option="6  ">
                         <img src="/images/Others.png" class="ctg-image"/>
                         <label class="form-check-label" for="flexRadioDefault6">
                             Others
@@ -114,12 +113,12 @@
                         <input type="file" class="form-file-input" id="image" name="image" multiple required>
                         <label class="form-file-label" for="image">
                             <span class="form-file-text custom-file-label">Choose image(s)...</span>
-                            <span class="form-file-button">Browse</span>
+                            <span class="form-file-button browse-btn">Browse</span>
                         </label>
                     </div>
                 </div>
-                <div class="mb-3">
-                    <button class="btn btn-success">Add Issue</button>
+                <div class="mb-3 text-center">
+                    <button class="btn btn-warning btn-lg ms-auto me-auto">Submit</button>
                 </div>
             </div>
             </form>

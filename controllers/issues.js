@@ -31,22 +31,12 @@ async function main(campground) {
   
   
     let info = await transporter.sendMail({
-    //   from: 'sid.mishra190601@gmail.com', // sender address
-    //   to: `${data[selectedCategory-1]["email"]}`, // list of receivers
-    //   cc:`${cc_mail}`,
-    //   subject: `${data[selectedCategory-1]["subject"]}`, // Subject line
-    //   text: `${data[selectedCategory-1]["body"]}\n\n Location \n${locationString}`, // plain text body
-    //   attachments:[{
-    //     filename:`${fileName}`,
-    //     path:`./uploads/${fileName}`
-    //   }],
 
-        
     from:'sid.mishra190601@gmail.com',
     to:`${data[0]['mail']}`,
     cc:`${campground['author']}`,
-    subject:'This is test case',
-    text:'Test content',
+    subject:`${campground['type']}`,
+    text:`Your Complaint has been received.\n\nComplaint:${campground.type}, \n\n Location:${campground.location}`,
    // html body
     });
   
