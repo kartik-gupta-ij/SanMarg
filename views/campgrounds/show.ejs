@@ -33,7 +33,11 @@
                 <li class="list-group-item text-muted">Category : <%= campground.type%></li>
                 <li class="list-group-item">Submitted by : <%= campground.author%></li>
             </ul>
+            <div class="card-body">
+                <a class="card-link btn btn-info" href="https://maps.google.com/?q=<%=campground.geometry.coordinates[1]%>,<%=campground.geometry.coordinates[0]%>">View Location in Google Maps</a>
+            </div>
         </div>
+
 
     </div>
     <div class="col-12 col-md-6">
