@@ -31,7 +31,7 @@ async function main(campground) {
     from:'sid.mishra190601@gmail.com',
     to:`hrkkrh01@gmail.com`,
     cc:`${campground['author']}`,
-    subject:`Your compilent of ${campground['type']} has been resgisted.`,
+    subject:`Your complaint of ${campground['type']} has been resgisted.`,
     text:`Hello\n\nYour Complaint has been received.
     \n\nComplaint Type:${campground.type},
      \nLocation:${campground.location},
