@@ -37,3 +37,10 @@ body {
 .category-container{
     padding:2%;
 }
+.nav-logo{
+    width: 8rem;
+}
+.tagline{
+    letter-spacing: 0.6ch;
+    font-weight: bold;
+}
