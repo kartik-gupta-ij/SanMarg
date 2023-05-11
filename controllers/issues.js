@@ -11,8 +11,6 @@ const nodemailer=require('nodemailer')
 async function main(campground) {
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
-    let testAccount = await nodemailer.createTestAccount();
-    console.log(campground)
   
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
@@ -31,19 +29,18 @@ async function main(campground) {
     let info = await transporter.sendMail({
 
     from:'sid.mishra190601@gmail.com',
-    to:`${data[0]['mail']}`,
+    to:`hrkkrh01@gmail.com`,
     cc:`${campground['author']}`,
-    subject:`${campground['type']}`,
-    text:`Your Complaint has been received.\n\nComplaint:${campground.type}, \n\n Location:${campground.location}`,
+    subject:`Your compilent of ${campground['type']} has been resgisted.`,
+    text:`Hello\n\nYour Complaint has been received.
+    \n\nComplaint Type:${campground.type},
+     \nLocation:${campground.location},
+     \nApplication ID :${campground._id}
+     \n\nYou can check the status by clicking the link given below...
+     \nhttps://sanmarg.onrender.com/issues/${campground._id}
+     \n\nThank you`,
    // html body
     });
-  
-    console.log("Message sent: %s", info.messageId);
-    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-  
-    // Preview only available when sending through an Ethereal account
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 }
 
 
@@ -57,10 +54,7 @@ module.exports.renderNewForm = (req, res) => {
 }
 
 module.exports.createCampground = async (req, res, next) => {
-    const geoData = await geocoder.forwardGeocode({
-        query: req.body.campground.location,
-        limit: 1
-    }).send()
+
     req.body.campground.title= ` [ ${req.body.campground.type} ] ${req.body.campground.location} `
     const campground = new Campground(req.body.campground);
     if(req.body.campground.latitude || req.body.campground.longitude){
@@ -69,13 +63,15 @@ module.exports.createCampground = async (req, res, next) => {
         campground.geometry.type="Point"
     }
     else{
+        const geoData = await geocoder.forwardGeocode({
+            query: req.body.campground.location,
+            limit: 1
+        }).send()
         campground.geometry = geoData.body.features[0].geometry
     }
     campground.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     await campground.save();
-    console.log(campground);
     main(campground).catch(console.error);
-    req.flash('success', 'Thank you for your submission!. Your request has been recieved and will be forwarded to governmeent portal as soon as possible');
     req.flash('success', 'Thank you for your submission!. Your request has been recieved and will be forwarded to respective corporation as soon as possible');
     res.redirect(`/issues/${campground._id}`)
 }
