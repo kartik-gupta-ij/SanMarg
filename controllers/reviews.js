@@ -21,7 +21,7 @@ async function main(campground,review) {
     });
   
     // send mail with defined transport object
-      
+
     let info = await transporter.sendMail({
 
     from:'sid.mishra190601@gmail.com',
@@ -30,7 +30,6 @@ async function main(campground,review) {
     subject:`Your complaint of ${campground['type']} has been updated.`,
     text:`Hello\n\nYour Complaint has been updated.
     \n\nNew complaint status : ${review.body}
-    \n\nUpdate by : ${review.user}
     \n\nComplaint Type : ${campground.type},
      \nLocation : ${campground.location},
      \nApplication ID : ${campground._id}
