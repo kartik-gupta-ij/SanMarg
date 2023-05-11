@@ -20,9 +20,7 @@ async function main(campground) {
       host: "smtp.gmail.com",
       secure: false, // true for 465, false for other ports
       auth: {
-        // user: "sid.mishra190601@gmail.com",
         user:`${process.env.NODEMAILER_EMAIL}`, // generated ethereal user
-        // pass: "somviedqzrgdgyyh", // generated ethereal password
         pass: `${process.env.NODEMAILER_KEY}`
       },  
     });
