@@ -38,9 +38,12 @@ body {
     padding:2%;
 }
 .nav-logo{
-    width: 8rem;
+    width: 5rem;
 }
 .tagline{
     letter-spacing: 0.6ch;
     font-weight: bold;
+}
+.showcase{
+    width: 15rem;
 }
