@@ -1,5 +1,7 @@
 const Campground = require('../models/campground');
 const Review = require('../models/review');
+const nodemailer=require('nodemailer')
+
 
 async function main(campground,review) {
     // Generate test SMTP service account from ethereal.email
@@ -19,8 +21,7 @@ async function main(campground,review) {
     });
   
     // send mail with defined transport object
-  
-  
+      
     let info = await transporter.sendMail({
 
     from:'sid.mishra190601@gmail.com',
