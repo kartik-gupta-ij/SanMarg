@@ -26,11 +26,13 @@ async function main(campground,review) {
     from:'sid.mishra190601@gmail.com',
     to:`hrkkrh01@gmail.com`,
     cc:`${campground['author']}`,
-    subject:`Your complaint of ${campground['type']} has been resgisted.`,
-    text:`Hello\n\nYour Complaint has been received.
-    \n\nComplaint Type:${campground.type},
-     \nLocation:${campground.location},
-     \nApplication ID :${campground._id}
+    subject:`Your complaint of ${campground['type']} has been updated.`,
+    text:`Hello\n\nYour Complaint has been updated.
+    \n\nNew complaint status : ${review.body}
+    \n\nUpdate by : ${review.user}
+    \n\nComplaint Type : ${campground.type},
+     \nLocation : ${campground.location},
+     \nApplication ID : ${campground._id}
      \n\nYou can check the status by clicking the link given below...
      \nhttps://sanmarg.onrender.com/issues/${campground._id}
      \n\nThank you`,
