@@ -1,17 +1,22 @@
 <div align="center">
-  <h1>🏕️ YelpCamp 🌲</h1>
+  <h1>🏕️ SanMarg 🌲</h1>
+
 </div>
 
 <div align="center">
   <h2>- Development Process -</h2>
 </div>
 
+<div align="center">
+  <h3>https://sanmarg.onrender.com</h3>
+</div>
+
 ## Initial Setup
 
 - [x] Add Landing Page
-- [x] Add Campgrounds Page that lists all campgrounds
+- [x] Add Issues Page that lists all Issues
 
-## Each Campground has:
+## Each Issue has:
 
 - [x] Name
 - [x] Image
@@ -21,33 +26,33 @@
 - [x] Create our header and footer partials
 - [x] Add in Bootstrap
 
-## Creating New Campgrounds
+## Creating New Issues
 
-- [x] Setup new campground POST route
+- [x] Setup new Issue POST route
 - [x] Add in body-parser
 - [x] Setup route to show form
 - [x] Add basic unstyled form
 
-## Style the campgrounds page
+## Style the Issues page
 
 - [x] Add a better header/title
-- [x] Make campgrounds display in a grid
+- [x] Make Issues display in a grid
 
 ## Style the Navbar and Form
 
 - [x] Add a navbar to all templates
-- [x] Style the new campground form
+- [x] Style the new Issue form
 
 ## Add Mongoose
 
 - [x] Install and configure Mongoose
-- [x] Setup campground model
-- [x] Use campground model inside of our routes
+- [x] Setup Issue model
+- [x] Use Issue model inside of our routes
 
 ## Show Page
 
 - [x] Review the RESTful routes we've seen so far
-- [x] Add description to our campground model
+- [x] Add description to our Issue model
 - [x] Show db.collection.drop()
 - [x] Add a show route/template
 
@@ -65,7 +70,7 @@
 ## Add the Comment model
 
 - [x] Make our errors go away
-- [x] Display comments on campground show page
+- [x] Display comments on Issue show page
 
 ## Comment New/Create
 
@@ -118,27 +123,27 @@
 - [x] Associate users and comments
 - [x] Save author's name to a comment automatically
 
-## Users + Campgrounds
+## Users + Issues
 
-- [x] Prevent an unauthenticated user from creating a campground
-- [x] Save username + id to newly created campground
+- [x] Prevent an unauthenticated user from creating a Issue
+- [x] Save username + id to newly created Issue
 
-## Editing Campgrounds
+## Editing Issues
 
 - [x] Add method override
-- [x] Add edit route for campgrounds
+- [x] Add edit route for Issues
 - [x] Add link to edit page
 - [x] Add update route
 
-## Deleting Campgrounds
+## Deleting Issues
 
 - [x] Add destroy route
 - [x] Add delete button
 
 ## Authorization (permission)
 
-- [x] User can only edit his/her campgrounds
-- [x] User can only delete his/her campgrounds
+- [x] User can only edit his/her Issues
+- [x] User can only delete his/her Issues
 - [x] Hide/Show edit and delete buttons
 
 ## Editing comments
@@ -205,18 +210,18 @@ GET       /sessions/login         Request the user login page
 DELETE    /sessions               Delete a session (user logout)
 
 -------------------------------------------------------------------------
-Campgrounds Route
+Issues Route
 -------------------------------------------------------------------------
 [Method]  [Route]
-GET       /issues            Fetch all campgrounds
-POST      /issues            Create a new campground to database
-GET       /issues/new        Request the campground adding page
-GET       /issues/:id        Show the campground information
-PUT       /issues/:id        Update campground information (all)
-PATCH     /issues/:id        Update campground information (part)
-DELETE    /issues/:id        Delete a campground
-GET       /issues/:id/edit   Request the campground editing page
-POST      /issues/:id/likes  Like the campground
+GET       /issues            Fetch all Issues
+POST      /issues            Create a new Issue to database
+GET       /issues/new        Request the Issue adding page
+GET       /issues/:id        Show the Issue information
+PUT       /issues/:id        Update Issue information (all)
+PATCH     /issues/:id        Update Issue information (part)
+DELETE    /issues/:id        Delete a Issue
+GET       /issues/:id/edit   Request the Issue editing page
+POST      /issues/:id/likes  Like the Issue
 
 -------------------------------------------------------------------------
 Comments Route
@@ -239,7 +244,7 @@ DELETE    /issues/:id/comments/:cid  Delete comment
 - [express](https://gulpjs.com/)
 - [mongodb](https://webpack.js.org/concepts/)
 
-Check [`package.json`](https://github.com/kartik-gupta-ij/yelpcamp7267/blob/master/package.json) file for more information.
+Check [`package.json`](https://github.com/kartik-gupta-ij/SanMarg7267/blob/master/package.json) file for more information.
 
 # Getting Started
 
@@ -249,7 +254,7 @@ Follow the instructions below to set up the environment and run this project on 
 
 ```bash
 # Clone repository
-$ git clone https://github.com/kartik-gupta-ij/yelpcamp7267.git
+$ git clone https://github.com/kartik-gupta-ij/SanMarg.git
 ```
 
 2. Install dependencies via NPM or Yarn
@@ -262,11 +267,13 @@ $ npm install
 $ yarn install
 ```
 
-3. Run the server with [nodemon](https://nodemon.io/) and open a browser to visit [http://localhost:3000/](http://localhost:3000/).
+3. Setup `.env` file using `example.env`
+
+4. Run the server with [nodemon](https://nodemon.io/) and open a browser to visit [http://localhost:3000/](http://localhost:3000/).
 
 ```bash
 # Run server
-$ npm run dev
+$ npm run start
 ```
 
 
@@ -274,12 +281,11 @@ $ npm run dev
 
 
 
-# YelpCamp PH
-A Filipino version of YelpCamp ~ from The Web Developer Bootcamp 2021 by Colt Steele: https://www.udemy.com/course/the-web-developer-bootcamp/ 
+# SanMarg
 
 
 Deployed on Heroku:
-https://yelpcamp7267.herokuapp.com/
+https://sanmarg.onrender.com/
 
 
 Stack:
@@ -319,17 +325,17 @@ Leaving a Review
 ![image](https://user-images.githubusercontent.com/73538719/114261965-dbef1d80-9a0f-11eb-92ba-a8a1b0a91bfc.png)
 
 
-Campgrounds by Current User
+Issues by Current User
 
 ![Screenshot from 2021-04-10 15-20-22](https://user-images.githubusercontent.com/73538719/114262465-a566d200-9a12-11eb-866a-e1790a064c84.png)
 
 
-Adding a New Campground
+Adding a New Issue
 
 ![image](https://user-images.githubusercontent.com/73538719/114262124-d514da80-9a10-11eb-8f39-00779dc5c6ed.png)
 
 
-Editing a Campground
+Editing a Issue
 
 ![image](https://user-images.githubusercontent.com/73538719/114262218-4bb1d800-9a11-11eb-8ac6-0133a60bf6d8.png)
 ![image](https://user-images.githubusercontent.com/73538719/114262284-b6fbaa00-9a11-11eb-8e10-fefbfcbf46ae.png)
