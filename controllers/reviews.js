@@ -13,19 +13,18 @@ async function main(campground,review) {
       host: "smtp.gmail.com",
       secure: false, // true for 465, false for other ports
       auth: {
-        user: "",
-        // user:`${process.env.NODEMAILER_EMAIL}`, // generated ethereal user
-        pass: "", // generated ethereal password
-        // pass: `${process.env.NODEMAILER_KEY}`
+        user:`${process.env.NODEMAILER_EMAIL}`, // generated ethereal user
+        pass: `${process.env.NODEMAILER_KEY}`
       },
     });
   
     // send mail with defined transport object
-
+  
+  
     let info = await transporter.sendMail({
 
-    from:'sid.mishra190601@gmail.com',
-    to:`hrkkrh01@gmail.com`,
+    from:`${process.env.NODEMAILER_EMAIL}`,
+    to:`${process.env.TO_EMAIL}`,
     cc:`${campground['author']}`,
     subject:`Your complaint of ${campground['type']} has been updated.`,
     text:`Hello\n\nYour Complaint has been updated.
